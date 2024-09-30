@@ -1,12 +1,20 @@
-
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    /* Imagem de fundo */
     background-image: url('https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk4JnZlcj0xMDAwJmZpbGU9bWF4cmVzZGVmYXVsdC5qcGcmY3JjPTExMjMxODkwMjUmc2l6ZT0wLjA0NTI2NCZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     
-    /* Adicionando uma camada de cor por cima da imagem */
+    /* Fazendo a imagem de fundo ficar bem mais apagada */
     position: relative;
 }
 
@@ -17,29 +25,34 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Sobreposição preta com 50% de transparência */
+    background-color: rgba(255, 255, 255, 0.8); /* Camada branca semi-transparente (80% opaco) */
     z-index: -1; /* Mantém a camada no fundo, atrás dos elementos */
 }
 
+/* Mantendo a centralização dos elementos */
 .login-container, .site-content {
     display: none;
 }
+
 .login-container.active, .site-content.active {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .login-container {
     border: 2px solid #c71d23;
     border-radius: 10px;
     padding: 20px;
     background-color: #f0f0f0;
 }
+
 .logo {
     width: 150px;
     height: auto;
     margin-bottom: 20px;
 }
+
 .input-field {
     border: 2px solid #c71d23;
     border-radius: 5px;
@@ -47,6 +60,7 @@ body::before {
     font-size: 16px;
     margin-bottom: 10px;
 }
+
 .login-button {
     background-color: #c71d23;
     color: white;
@@ -55,9 +69,11 @@ body::before {
     padding: 10px 20px;
     cursor: pointer;
 }
+
 .login-button:hover {
     background-color: #a8191d;
 }
+
 .search-box {
     border: 2px solid #c71d23;
     border-radius: 5px;
@@ -65,6 +81,7 @@ body::before {
     font-size: 16px;
     margin-bottom: 10px;
 }
+
 .email-output {
     min-width: 200px;
     max-width: 100%;
