@@ -1,10 +1,11 @@
 const senhaCorreta = "MUDAR@123";
 
 function verificarSenha() {
-    const senha = document.getElementById('password').value;
+    const senha = document.getElementById('password').value.toLowerCase(); // Converte a senha para minúsculas
+    const senhaCorretaLower = senhaCorreta.toLowerCase(); // Converte a senha correta para minúsculas
     const loginMessage = document.getElementById('loginMessage');
 
-    if (senha === senhaCorreta) {
+    if (senha === senhaCorretaLower) {
         // Mostra o conteúdo do site e esconde a tela de login
         document.getElementById('loginContainer').classList.remove('active');
         document.getElementById('siteContent').classList.add('active');
