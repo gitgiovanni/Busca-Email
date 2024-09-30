@@ -4,72 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busca EMAIL - Login</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        .login-container, .site-content {
-            display: none;
-        }
-        .login-container.active, .site-content.active {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .login-container {
-            border: 2px solid #c71d23;
-            border-radius: 10px;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        .logo {
-            width: 150px;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        .input-field {
-            border: 2px solid #c71d23;
-            border-radius: 5px;
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .login-button {
-            background-color: #c71d23;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        .login-button:hover {
-            background-color: #a8191d;
-        }
-        .search-box {
-            border: 2px solid #c71d23;
-            border-radius: 5px;
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .email-output {
-            min-width: 200px;
-            max-width: 100%;
-            border: 2px solid #c71d23;
-            border-radius: 5px;
-            padding: 10px;
-            font-size: 16px;
-            text-align: center;
-            background-color: #f0f0f0;
-            overflow-wrap: break-word;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Referência ao CSS separado -->
 </head>
 <body>
 
@@ -88,32 +23,7 @@
         <div class="email-output">Seu email é: <span id="emailDisplay"></span></div>
     </div>
 
-    <script>
-        const senhaCorreta = "MUDAR@123";
-
-        function verificarSenha() {
-            const senha = document.getElementById('password').value;
-            const loginMessage = document.getElementById('loginMessage');
-
-            if (senha === senhaCorreta) {
-                // Mostra o conteúdo do site e esconde a tela de login
-                document.getElementById('loginContainer').classList.remove('active');
-                document.getElementById('siteContent').classList.add('active');
-            } else {
-                // Exibe mensagem de erro
-                loginMessage.textContent = "Senha incorreta. Tente novamente.";
-                loginMessage.style.color = "red";
-            }
-        }
-
-        function mascaraCPF(input) {
-            let value = input.value.replace(/\D/g, ''); 
-            value = value.replace(/(\d{3})(\d)/, '$1.$2'); 
-            value = value.replace(/(\d{3})(\d)/, '$1.$2'); 
-            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
-            input.value = value;
-        }
-    </script>
+    <script src="script.js"></script> <!-- Referência ao JavaScript separado -->
 
 </body>
 </html>
