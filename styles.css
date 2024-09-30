@@ -73,6 +73,13 @@ body::before {
 .login-button:hover {
     background-color: #a8191d;
 }
+.site-content {
+    border: 2px solid #c71d23;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
 
 .search-box {
     border: 2px solid #c71d23;
