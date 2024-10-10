@@ -34,7 +34,8 @@ async function buscarEmail() {
     }
 
     try {
-        const response = await fetch(`http://10.30.35.8:8080/rest/index/WSGETFUNCIONARIO?cpf=${cpf}`);
+        const response = await fetch(`https://cors-anywhere.herokuapp.com/http://10.30.35.8:8080/rest/index/WSGETFUNCIONARIO?cpf=${cpf}`);
+
         
         if (!response.ok) {
             throw new Error('Erro na busca do e-mail.');
