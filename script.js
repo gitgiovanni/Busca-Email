@@ -23,3 +23,30 @@ function mascaraCPF(input) {
     value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
     input.value = value;
 }
+
+async function buscarEmail() {
+    const cpf = document.getElementById('cpf').value.replace(/\D/g, ''); // Remove pontos e traços do CPF
+    const emailDisplay = document.getElementById('emailDisplay');
+
+    if (cpf.length !== 11) { // Verifica se o CPF tem 11 dígitos
+        emailDisplay.textContent = "CPF inválido.";
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://10.30.35.8:8080/rest/index/WSGETFUNCIONARIO?cpf=${cpf}`);
+        
+        if (!response.ok) {
+            throw new Error('Erro na busca do e-mail.');
+        }
+
+        const data = await response.json(); // Supondo que a API retorne um JSON
+        const email = data.email || "E-mail não encontrado.";
+
+        emailDisplay.textContent = email;
+    } catch (error) {
+        emailDisplay.textContent = "Erro ao buscar e-mail.";
+    }
+}
+
+document.getElementById('cpf').addEventListener('blur', buscarEmail); // Dispara a busca quando o campo de CPF perde o foco
