@@ -34,13 +34,12 @@ async function buscarEmail() {
     }
 
     try {
-        // Altere aqui para usar a URL do seu servidor proxy
         const response = await fetch(`http://localhost:3000/api`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ cpf }), // Envia o CPF no corpo da requisição
+            body: JSON.stringify({ cpf }),
         });
 
         if (!response.ok) {
@@ -48,6 +47,8 @@ async function buscarEmail() {
         }
 
         const data = await response.json(); // Supondo que a API retorne um JSON
+
+        console.log('Resposta do servidor proxy:', data); // Log da resposta do servidor proxy
 
         // Processa a resposta para extrair o e-mail
         const funcionarios = data.Funcionarios; // Acesse o array de Funcionarios
@@ -59,8 +60,9 @@ async function buscarEmail() {
         }
     } catch (error) {
         emailDisplay.textContent = "Erro ao buscar e-mail.";
-        console.error(error); // Para fins de depuração, você pode exibir o erro no console
+        console.error(error); // Para fins de depuração
     }
 }
+
 
 document.getElementById('cpf').addEventListener('blur', buscarEmail); // Dispara a busca quando o campo de CPF perde o foco
