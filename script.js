@@ -39,7 +39,7 @@ async function buscarEmail() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ cpf }),
+            body: JSON.stringify({ cpf }), // Envia o CPF no corpo da requisição
         });
 
         if (!response.ok) {
@@ -47,22 +47,14 @@ async function buscarEmail() {
         }
 
         const data = await response.json(); // Supondo que a API retorne um JSON
+        const email = (data.Funcionarios && data.Funcionarios.length > 0) ? data.Funcionarios[0].Email.trim() : "Funcionário não encontrado.";
 
-        console.log('Resposta do servidor proxy:', data); // Log da resposta do servidor proxy
-
-        // Processa a resposta para extrair o e-mail
-        const funcionarios = data.Funcionarios; // Acesse o array de Funcionarios
-        if (funcionarios && funcionarios.length > 0) {
-            const email = funcionarios[0].Email.trim(); // Pega o e-mail do primeiro funcionário e remove espaços em branco
-            emailDisplay.textContent = email || "E-mail não encontrado."; // Exibe o e-mail ou uma mensagem caso não encontre
-        } else {
-            emailDisplay.textContent = "Funcionário não encontrado.";
-        }
+        emailDisplay.textContent = email;
     } catch (error) {
         emailDisplay.textContent = "Erro ao buscar e-mail.";
-        console.error(error); // Para fins de depuração
     }
 }
+
 
 
 document.getElementById('cpf').addEventListener('blur', buscarEmail); // Dispara a busca quando o campo de CPF perde o foco
