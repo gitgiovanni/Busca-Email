@@ -34,13 +34,7 @@ async function buscarEmail() {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ cpf }), // Envia o CPF no corpo da requisição
-        });
+        const response = await fetch(`http://localhost:3000/api?cpf=${cpf}`); // Agora usando GET
 
         if (!response.ok) {
             throw new Error('Erro na busca do e-mail.');
@@ -54,6 +48,7 @@ async function buscarEmail() {
         emailDisplay.textContent = "Erro ao buscar e-mail.";
     }
 }
+
 
 
 
