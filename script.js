@@ -35,7 +35,7 @@ async function buscarEmail() {
 
     try {
         // Altere aqui para usar a URL do seu servidor proxy
-        const response = await fetch(`http://localhost:3000/api`, { // Mude para a URL do servidor proxy
+        const response = await fetch(`http://localhost:3000/api`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -48,11 +48,18 @@ async function buscarEmail() {
         }
 
         const data = await response.json(); // Supondo que a API retorne um JSON
-        const email = data.email || "E-mail não encontrado.";
 
-        emailDisplay.textContent = email;
+        // Processa a resposta para extrair o e-mail
+        const funcionarios = data.Funcionarios; // Acesse o array de Funcionarios
+        if (funcionarios && funcionarios.length > 0) {
+            const email = funcionarios[0].Email.trim(); // Pega o e-mail do primeiro funcionário e remove espaços em branco
+            emailDisplay.textContent = email || "E-mail não encontrado."; // Exibe o e-mail ou uma mensagem caso não encontre
+        } else {
+            emailDisplay.textContent = "Funcionário não encontrado.";
+        }
     } catch (error) {
         emailDisplay.textContent = "Erro ao buscar e-mail.";
+        console.error(error); // Para fins de depuração, você pode exibir o erro no console
     }
 }
 
