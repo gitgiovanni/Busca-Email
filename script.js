@@ -34,9 +34,9 @@ async function buscarEmail() {
     }
 
     try {
-        const response = await fetch(`https://cors-anywhere.herokuapp.com/http://10.30.35.8:8080/rest/index/WSGETFUNCIONARIO?cpf=${cpf}`);
+        // Altere aqui para usar o seu endpoint proxy configurado no Nginx
+        const response = await fetch(`https://localhost/api/?cpf=${cpf}`);
 
-        
         if (!response.ok) {
             throw new Error('Erro na busca do e-mail.');
         }
