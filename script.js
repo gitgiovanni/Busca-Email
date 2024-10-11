@@ -24,7 +24,9 @@ function mascaraCPF(input) {
     input.value = value;
 }
 
-async function buscarEmail() {
+async function buscarEmail(event) {
+    event.preventDefault(); // Previne o comportamento padrão do formulário (se houver)
+
     const cpf = document.getElementById('cpf').value.replace(/\D/g, ''); // Remove pontos e traços do CPF
     const emailDisplay = document.getElementById('emailDisplay');
 
@@ -34,7 +36,7 @@ async function buscarEmail() {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api?cpf=${cpf}`); // Agora usando GET
+        const response = await fetch(`http://localhost:3000/api?cpf=${cpf}`); // Usando GET
 
         if (!response.ok) {
             throw new Error('Erro na busca do e-mail.');
@@ -49,7 +51,10 @@ async function buscarEmail() {
     }
 }
 
-
-
-
 document.getElementById('cpf').addEventListener('blur', buscarEmail); // Dispara a busca quando o campo de CPF perde o foco
+
+// Se você tiver um botão para buscar o e-mail, adicione um listener
+const buscarButton = document.getElementById('buscarButton'); // Substitua pelo ID correto do seu botão
+if (buscarButton) {
+    buscarButton.addEventListener('click', buscarEmail);
+}
