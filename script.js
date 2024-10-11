@@ -1,16 +1,16 @@
 const senhaCorreta = "MUDAR@123";
+let emailBuscado = false; // Estado para controlar se a busca do email já foi feita
 
 function verificarSenha() {
-    const senha = document.getElementById('password').value.toLowerCase(); // Converte a senha para minúsculas
-    const senhaCorretaLower = senhaCorreta.toLowerCase(); // Converte a senha correta para minúsculas
+    const senha = document.getElementById('password').value.toLowerCase();
+    const senhaCorretaLower = senhaCorreta.toLowerCase();
     const loginMessage = document.getElementById('loginMessage');
 
     if (senha === senhaCorretaLower) {
-        // Mostra o conteúdo do site e esconde a tela de login
         document.getElementById('loginContainer').classList.remove('active');
         document.getElementById('siteContent').classList.add('active');
+        emailBuscado = false; // Resetar o estado após o login
     } else {
-        // Exibe mensagem de erro
         loginMessage.textContent = "Senha incorreta. Tente novamente.";
         loginMessage.style.color = "red";
     }
@@ -25,36 +25,37 @@ function mascaraCPF(input) {
 }
 
 async function buscarEmail(event) {
-    event.preventDefault(); // Previne o comportamento padrão do formulário (se houver)
+    event.preventDefault();
 
-    const cpf = document.getElementById('cpf').value.replace(/\D/g, ''); // Remove pontos e traços do CPF
+    // Verifica se a busca já foi realizada
+    if (emailBuscado) {
+        return; // Se já buscou, não faz nada
+    }
+
+    const cpf = document.getElementById('cpf').value.replace(/\D/g, '');
     const emailDisplay = document.getElementById('emailDisplay');
 
-    if (cpf.length !== 11) { // Verifica se o CPF tem 11 dígitos
+    if (cpf.length !== 11) {
         emailDisplay.textContent = "CPF inválido.";
         return;
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api?cpf=${cpf}`); // Usando GET
+        const response = await fetch(`http://localhost:3000/api?cpf=${cpf}`);
 
         if (!response.ok) {
             throw new Error('Erro na busca do e-mail.');
         }
 
-        const data = await response.json(); // Supondo que a API retorne um JSON
+        const data = await response.json();
         const email = (data.Funcionarios && data.Funcionarios.length > 0) ? data.Funcionarios[0].Email.trim() : "Funcionário não encontrado.";
 
         emailDisplay.textContent = email;
+        emailBuscado = true; // Marcar que a busca foi realizada
     } catch (error) {
         emailDisplay.textContent = "Erro ao buscar e-mail.";
     }
 }
 
-document.getElementById('cpf').addEventListener('blur', buscarEmail); // Dispara a busca quando o campo de CPF perde o foco
-
-// Se você tiver um botão para buscar o e-mail, adicione um listener
-const buscarButton = document.getElementById('buscarButton'); // Substitua pelo ID correto do seu botão
-if (buscarButton) {
-    buscarButton.addEventListener('click', buscarEmail);
-}
+// Adiciona o evento apenas após a tela de login ser removida
+document.getElementById('cpf').addEventListener('blur', buscarEmail);
