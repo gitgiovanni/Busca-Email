@@ -34,8 +34,14 @@ async function buscarEmail() {
     }
 
     try {
-        // Altere aqui para usar o seu endpoint proxy configurado no Nginx
-        const response = await fetch(`https://localhost/api/?cpf=${cpf}`);
+        // Altere aqui para usar a URL do seu servidor proxy
+        const response = await fetch(`http://localhost:3000/api`, { // Mude para a URL do servidor proxy
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ cpf }), // Envia o CPF no corpo da requisição
+        });
 
         if (!response.ok) {
             throw new Error('Erro na busca do e-mail.');
