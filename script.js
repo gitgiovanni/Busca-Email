@@ -6,8 +6,8 @@ function verificarSenha() {
     const loginMessage = document.getElementById('loginMessage');
 
     if (senha === senhaCorretaLower) {
-        document.getElementById('loginContainer').classList.remove('active');
-        document.getElementById('siteContent').classList.add('active');
+        document.getElementById('loginContainer').style.display = 'none';
+        document.getElementById('siteContent').style.display = 'block';
     } else {
         loginMessage.textContent = "Senha incorreta. Tente novamente.";
         loginMessage.style.color = "red";
