@@ -32,8 +32,10 @@ async function buscarEmail(event) {
         return; // Se já buscou, não faz nada
     }
 
-    const cpf = document.getElementById('cpf').value.replace(/\D/g, '');
+    const cpfInput = document.getElementById('cpf');
+    const cpf = cpfInput.value.replace(/\D/g, '');
     const emailDisplay = document.getElementById('emailDisplay');
+    const spinner = document.getElementById('spinner'); // Obtém o elemento do spinner
 
     if (cpf.length !== 11) {
         emailDisplay.textContent = "CPF inválido.";
@@ -41,8 +43,12 @@ async function buscarEmail(event) {
     }
 
     try {
-        // Chamada para a API HTTPS
-        const response = await fetch(`http://10.30.35.8:8080/rest/index/WSGETFUNCIONARIO?cpf=${cpf}`, {
+        // Mostra o spinner e desabilita o campo de CPF
+        spinner.style.display = 'block';
+        cpfInput.disabled = true;
+        emailDisplay.textContent = "Buscando...";
+
+        const response = await fetch(`https://10.30.35.8:8080/rest/index/WSGETFUNCIONARIO?cpf=${cpf}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -59,7 +65,12 @@ async function buscarEmail(event) {
         emailDisplay.textContent = email;
         emailBuscado = true; // Marcar que a busca foi realizada
     } catch (error) {
-        emailDisplay.textContent = "Erro ao buscar e-mail.";
+        emailDisplay.textContent = "Erro ao buscar e-mail: " + error.message;
+    } finally {
+        // Oculta o spinner e habilita o campo de CPF
+        spinner.style.display = 'none';
+        cpfInput.disabled = false;
+        cpfInput.value = ''; // Limpa o campo de CPF, se desejar
     }
 }
 
