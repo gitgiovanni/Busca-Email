@@ -42,7 +42,7 @@ async function buscarEmail(event) {
 
     try {
         // Chamada para a API HTTPS
-        const response = await fetch(`https://10.30.35.8:8080/rest/index/WSGETFUNCIONARIO?cpf=${cpf}`, {
+        const response = await fetch(`http://10.30.35.8:8080/rest/index/WSGETFUNCIONARIO?cpf=${cpf}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
