@@ -1,4 +1,4 @@
-const senhaCorreta = "MUDAR@123";
+const senhaCorreta = "MUDAR@123"; 
 let emailBuscado = false; // Estado para controlar se a busca do email já foi feita
 
 function verificarSenha() {
@@ -41,7 +41,13 @@ async function buscarEmail(event) {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api?cpf=${cpf}`);
+        // Chamada para a API HTTPS
+        const response = await fetch(`https://10.30.35.8:8080/rest/index/WSGETFUNCIONARIO?cpf=${cpf}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
         if (!response.ok) {
             throw new Error('Erro na busca do e-mail.');
