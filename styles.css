@@ -100,3 +100,19 @@ body::before {
     background-color: #f0f0f0;
     overflow-wrap: break-word;
 }
+
+  .spinner {
+            display: none; /* Oculto por padrão */
+            border: 8px solid #f3f3f3; /* Cor de fundo */
+            border-top: 8px solid #3498db; /* Cor do spinner */
+            border-radius: 50%;
+            width: 40px; /* Tamanho do spinner */
+            height: 40px; /* Tamanho do spinner */
+            animation: spin 1s linear infinite; /* Animação */
+            margin: 10px auto; /* Centralização */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
