@@ -116,3 +116,18 @@ body::before {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+.site-content, .login-container {
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+@media (max-width: 600px) {
+    .login-container, .site-content {
+        width: 90%;
+        padding: 15px;
+    }
+    .input-field, .search-box {
+        width: 100%;
+    }
+}
