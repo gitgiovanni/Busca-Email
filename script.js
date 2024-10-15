@@ -15,6 +15,15 @@ function verificarSenha() {
         loginMessage.style.color = "red";
     }
 }
+function togglePassword() {
+    const passwordField = document.getElementById('password');
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
+
 
 function mascaraCPF(input) {
     let value = input.value.replace(/\D/g, ''); 
