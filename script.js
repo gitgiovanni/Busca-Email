@@ -57,7 +57,7 @@ async function buscarEmail(event) {
         cpfInput.disabled = true;
         emailDisplay.textContent = "Buscando...";
 
-        const response = await fetch(`https://10.30.35.8:8080/rest/index/WSGETFUNCIONARIO?cpf=${cpf}`, {
+        const response = await fetch(`https://10.30.35.8:8443/rest`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
