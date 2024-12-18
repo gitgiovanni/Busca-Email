@@ -3,31 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Busca EMAIL - Login</title>
-    <!-- Verificar se o caminho do CSS está correto -->
-    <link rel="stylesheet" href="styles.css"> <!-- Certifique-se de que o arquivo styles.css está no mesmo diretório -->
+    <title>Acompanhamento de Pedido</title>
+  
+    <link rel="stylesheet" href="styles.css"> 
     <link rel="stylesheet" href="css/styles.css">
 <script src="js/script.js"></script>
 
 </head>
 <body>
 
-    <!-- Tela de Login -->
-    <div class="login-container active" id="loginContainer">
-        <img src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzAxJnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5LnBuZyZjcmM9NDIyMDg2NDE1OCZzaXplPTAuMDA2MDY3JnVJZD0yNSZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9dHJ1ZSZhdHRhY2g9ZmFsc2U=.png" alt="Logo" class="logo">
-        <input type="password" id="password" class="input-field" placeholder="Digite a senha de acesso">
-<span class="toggle-password" onclick="togglePassword()">👁️</span>
-        <button class="login-button" onclick="verificarSenha()">Entrar</button>
-        <div id="loginMessage"></div>
-    </div>
-
 
     <!-- Conteúdo do Site -->
    <div class="site-content" id="siteContent">
         <img src="https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzAxJnZlcj0xMDAwJmZpbGU9YW5kcmEtbG9nbyslMjgxJTI5LnBuZyZjcmM9NDIyMDg2NDE1OCZzaXplPTAuMDA2MDY3JnVJZD0yNSZmU0lkPTEmdVNJZD0xJmQ9ZmFsc2UmdGtuPSZwdWJsaWNVcmw9dHJ1ZSZhdHRhY2g9ZmFsc2U=.png" alt="Logo" class="logo">
-        <input type="text" id="cpf" class="search-box" placeholder="Digite seu CPF" maxlength="14" oninput="mascaraCPF(this)" required>
-        <div class="email-output">Seu email é: <span id="emailDisplay"></span></div>
-       <div class="spinner" id="spinner"></div>
+        <input type="text" id="cpf" class="search-box" placeholder="Digite o número do pedido" maxlength="140">
+        <div class="email-output">O Status é:<span id=""></span></div>
     </div>
 
  
