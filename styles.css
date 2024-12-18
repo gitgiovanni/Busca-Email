@@ -18,34 +18,16 @@ body {
     position: relative;
 }
 
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.8); /* Camada branca semi-transparente (80% opaco) */
-    z-index: -1; /* Mantém a camada no fundo, atrás dos elementos */
-}
 
-/* Mantendo a centralização dos elementos */
-.login-container, .site-content {
-    display: none;
-}
 
-.login-container.active, .site-content.active {
+
+ .site-content.active {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.login-container {
-    border: 2px solid #c71d23;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: #f0f0f0;
-}
+
 
 .logo {
     width: 150px;
@@ -61,18 +43,7 @@ body::before {
     margin-bottom: 10px;
 }
 
-.login-button {
-    background-color: #c71d23;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
 
-.login-button:hover {
-    background-color: #a8191d;
-}
 .site-content {
     border: 2px solid #c71d23;
     border-radius: 10px;
@@ -101,22 +72,8 @@ body::before {
     overflow-wrap: break-word;
 }
 
-  .spinner {
-            display: none; /* Oculto por padrão */
-            border: 8px solid #f3f3f3; /* Cor de fundo */
-            border-top: 8px solid #3498db; /* Cor do spinner */
-            border-radius: 50%;
-            width: 40px; /* Tamanho do spinner */
-            height: 40px; /* Tamanho do spinner */
-            animation: spin 1s linear infinite; /* Animação */
-            margin: 10px auto; /* Centralização */
-        }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-.site-content, .login-container {
+.site-content{
     min-width: 300px;
     min-height: 300px;
     max-width: 90vw;
