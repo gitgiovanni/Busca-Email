@@ -7,7 +7,72 @@
    </head>
 
 <style>
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
 
+    background-image: url('https://fluig.andra.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0xNzk4JnZlcj0xMDAwJmZpbGU9bWF4cmVzZGVmYXVsdC5qcGcmY3JjPTExMjMxODkwMjUmc2l6ZT0wLjA0NTI2NCZ1SWQ9MjUmZlNJZD0xJnVTSWQ9MSZkPWZhbHNlJnRrbj0mcHVibGljVXJsPXRydWUmYXR0YWNoPWZhbHNl.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: -1;
+}
+
+.site-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #c71d23;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    min-width: 300px;
+    max-width: 90vw;
+    min-height: 300px;
+    max-height: 90vh;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    border: 2px solid #c71d23;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    .site-content {
+        width: 90%;
+        padding: 15px;
+    }
+    .search-box {
+        width: 100%;
+    }
+}
     
 </style>
 <body>
